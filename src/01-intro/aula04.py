@@ -69,7 +69,7 @@ print (None, type(None))
 numeros = [1, 3, 5]
 print(numeros, type(numeros))
 
-# Tupla (tuple)
+# Tupla (tuple) #imutável
 emails = ('joao@gmail.com', 'maria@gmail.com')
 print(emails, type(emails))
 
