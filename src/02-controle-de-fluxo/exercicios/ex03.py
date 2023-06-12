@@ -12,6 +12,8 @@ for i in range(2, 6):
             NUMERO_INVALIDO = False
         elif (1 <= identificador[i] <= 9) and (i == 5):
             NUMERO_INVALIDO = False
+        else:
+            NUMERO_INVALIDO = True
 
 if len(identificador) != 7:
     print('Identificador inválido')
