@@ -14,7 +14,7 @@ carro = {
 print(carro, type(carro))
 
 
-# acesar valores por chave
+# acessar valores por chave
 print(carro["marca"])
 print(carro.get("marca"))
 
