@@ -1,5 +1,5 @@
 """ Exercício 01 - imprime a soma dos números """
-
+breakpoint()
 def somar (n1, n2, n3):
     print('A soma dos números é:', n1 + n2 + n3)
 
