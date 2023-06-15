@@ -1,5 +1,5 @@
 """ Exercício 04 - retorna a soma dos números usando args """
-breakpoint()
+
 def somar(*args):
     soma = 0.0
     for numero in args:

@@ -1,5 +1,5 @@
 """ Exercício 03 - retorna a soma dos números usando tupla """
-breakpoint()
+
 def somar(numeros):
     soma = 0.0
     for numero in numeros:
