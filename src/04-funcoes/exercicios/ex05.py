@@ -46,7 +46,7 @@ def obter_classificacao(imc):
         return classificacao
 
 
-individuo['classificacao'] = obter_classificacao(individuo['imc'])
+classificacao = obter_classificacao(individuo['imc'])
 
 
 def situacao_individuo(imc):
@@ -67,10 +67,10 @@ def situacao_individuo(imc):
         return situacao
 
 
-individuo['situacao'] = situacao_individuo(individuo['imc'])
+situacao = situacao_individuo(individuo['imc'])
 
 print(f'Seu IMC é: {individuo["imc"]}')
 
-print(f'Sua classificação é: {individuo["classificacao"]}')
+print(f'Sua classificação é: {classificacao}')
 
-print(f'Sua situação se enquadra como: {individuo["situacao"]}')
+print(f'Sua situação se enquadra como: {situacao}')
