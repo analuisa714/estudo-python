@@ -1,4 +1,4 @@
-""" Exercício 01 """
+""" Exercício 01 - tupla de alunos, com dicionario """
 
 def carregar_dados_alunos(nome_arquivo):
     with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
