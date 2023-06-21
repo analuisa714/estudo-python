@@ -1,4 +1,4 @@
-""" Exercício 03 - classe Participacao """
+""" Exercício 04 - lista de participações """
 
 
 def esta_vazio(value):
@@ -16,6 +16,79 @@ def esta_vazio(value):
         return ATRIBUTO_INVALIDO
 
 
+class Projeto:
+    def __init__(self, codigo, titulo, responsavel):
+        self.titulo = titulo
+        self.codigo = codigo
+        self.responsavel = responsavel
+        self.participacoes = []
+
+    @classmethod
+    def from_string(cls, rep_projeto):
+        codigo, titulo, responsavel = rep_projeto.split(sep=',')
+        return cls(codigo, titulo, responsavel)
+
+    def __str__(self):
+        return f'Projeto[titulo={self.titulo}, codigo={self.codigo}, responsavel={self.responsavel}]'
+
+    def __repr__(self):
+        return f'Projeto({self.codigo},{self.titulo},{self.responsavel})'
+
+    def __eq__(self, value):
+        if isinstance(value, self.__class__):
+            return self.codigo == value.codigo
+        return False
+
+    def __hash__(self):
+        return hash(self.codigo)
+
+    def add_participacao(self, participacao):
+        self.participacoes.append(participacao)
+
+    def print_participacoes(self):
+        for participacao in self.participacoes:
+            print(participacao, end='\n\n')
+
+    @property
+    def titulo(self):
+        return self._titulo
+
+    @titulo.setter
+    def titulo(self, value):
+        if esta_vazio(value):
+            raise ValueError(
+                "Não foi atribuído algum valor para o campo título")
+        else:
+            self._titulo = value
+
+    @property
+    def codigo(self):
+        return self._codigo
+
+    @codigo.setter
+    def codigo(self, value):
+        if esta_vazio(value):
+            raise ValueError(
+                "Não foi atribuído algum valor para o campo código")
+        elif (not value.isdigit()) or (value == '0'):
+            raise ValueError(
+                "Digite apenas números interos positivos para o campo código")
+        else:
+            self._codigo = int(value)
+
+    @property
+    def responsavel(self):
+        return self._responsavel
+
+    @responsavel.setter
+    def responsavel(self, value):
+        if esta_vazio(value):
+            raise ValueError(
+                "Não foi atribuído algum valor para o campo responsável")
+        else:
+            self._responsavel = value
+
+
 class Participacao:
     def __init__(self, codigo, data_inicio, data_fim, aluno, projeto_associado):
         self.codigo = codigo
@@ -27,11 +100,8 @@ class Participacao:
     def __str__(self):
         return f'Participacao[codigo={self.codigo}, data_inicio={self.data_inicio}, data_fim={self.data_fim}, aluno={self.aluno}, projeto_associado={self.projeto_associado}]'
 
-    @classmethod
-    def from_string(cls, rep_participacao):
-        codigo, data_inicio, data_fim, aluno, projeto_associado = rep_participacao.split(
-            sep=',')
-        return cls(codigo, data_inicio, data_fim, aluno, projeto_associado)
+    def __repr__(self):
+        return f'Participacao({self.codigo},{self.data_inicio},{self.data_fim},{self.aluno},{self.projeto_associado})'
 
     @property
     def codigo(self):
@@ -92,9 +162,6 @@ class Participacao:
                 'Não foi atribuído algum projeto ao campo "projeto"')
         else:
             self._projeto = value
-    
-    def __repr__(self):
-        return f'Participacao({self.codigo},{self.data_inicio},{self.data_fim},{self.aluno},{self.projeto_associado})'
 
 
 class Aluno:
@@ -159,76 +226,22 @@ class Aluno:
         return f'Aluno[nome={self.nome}, prontuario={self.prontuario}, email={self.email}]'
 
 
-class Projeto:
-    def __init__(self, codigo, titulo, responsavel):
-        self.titulo = titulo
-        self.codigo = codigo
-        self.responsavel = responsavel
-
-    @classmethod
-    def from_string(cls, rep_projeto):
-        codigo, titulo, responsavel = rep_projeto.split(sep=',')
-        return cls(codigo, titulo, responsavel)
-
-    def __eq__(self, value):
-        if isinstance(value, self.__class__):
-            return self.codigo == value.codigo
-        return False
-
-    def __hash__(self):
-        return hash(self.codigo)
-
-    @property
-    def titulo(self):
-        return self._titulo
-
-    @titulo.setter
-    def titulo(self, value):
-        if esta_vazio(value):
-            raise ValueError(
-                "Não foi atribuído algum valor para o campo título")
-        else:
-            self._titulo = value
-
-    @property
-    def codigo(self):
-        return self._codigo
-
-    @codigo.setter
-    def codigo(self, value):
-        if esta_vazio(value):
-            raise ValueError(
-                "Não foi atribuído algum valor para o campo código")
-        elif (not value.isdigit()) or (value == '0'):
-            raise ValueError(
-                "Digite apenas números interos positivos para o campo código")
-        else:
-            self._codigo = int(value)
-
-    @property
-    def responsavel(self):
-        return self._responsavel
-
-    @responsavel.setter
-    def responsavel(self, value):
-        if esta_vazio(value):
-            raise ValueError(
-                "Não foi atribuído algum valor para o campo responsável")
-        else:
-            self._responsavel = value
-
-    def __str__(self):
-        return f'Projeto[titulo={self.titulo}, codigo={self.codigo}, responsavel={self.responsavel}]'
-
-    def __repr__(self):
-        return f'Projeto({self.codigo},{self.titulo},{self.responsavel})'
-
-
 aluno1 = Aluno.from_string('SP0101,João,joao@email.com')
+aluno2 = Aluno.from_string('SP2020,Maria,maria@email.com')
 
 projeto1 = Projeto.from_string(
-    '1,Laboratório de Desenvolvimento de Software,Pedro Gomes')
+    '10,Laboratório de Desenvolvimento de Software,Pedro Gomes')
+projeto2 = Projeto.from_string(
+    '20,LabHardware,Sônia Andrade')
 
-participacao = Participacao(
-    1, '10/11/2023', '10/03/2024', aluno1, projeto1)
-print(participacao)
+participacao1 = Participacao(1, '10/11/2023', '10/03/2024', aluno1, projeto1)
+participacao2 = Participacao(2, '10/11/2023', '10/03/2024', aluno2, projeto1)
+
+participacao3 = Participacao(3, '10/11/2023', '10/03/2024', aluno1, projeto2)
+
+projeto1.add_participacao(participacao1)
+projeto1.add_participacao(participacao2)
+projeto1.print_participacoes()
+
+projeto2.add_participacao(participacao3)
+projeto2.print_participacoes()
