@@ -105,6 +105,9 @@ class Aluno:
         prontuario, nome, email = rep_aluno.split(sep=',')
         return cls(prontuario, nome, email)
 
+    def __repr__(self):
+        return f'Aluno({self.prontuario},{self.nome},{self.email})'
+
     def __eq__(self, value):
         if isinstance(value, self.__class__):
             return self.prontuario == value.prontuario
@@ -214,11 +217,15 @@ class Projeto:
     def __str__(self):
         return f'Projeto[titulo={self.titulo}, codigo={self.codigo}, responsavel={self.responsavel}]'
 
+    def __repr__(self):
+        return f'Projeto({self.codigo}, {self.titulo}, {self.responsavel})'
+
 
 aluno1 = Aluno.from_string('SP0101,João,joao@email.com')
 
 projeto1 = Projeto.from_string(
     '1,Laboratório de Desenvolvimento de Software,Pedro Gomes')
 
-participacao = Participacao(1, '10/11/2023', '10/03/2024', aluno1, projeto1)
+participacao = Participacao(
+    1, '10/11/2023', '10/03/2024', aluno1, projeto1)
 print(participacao)
