@@ -236,7 +236,6 @@ projeto2 = Projeto.from_string(
 
 participacao1 = Participacao(1, '10/11/2023', '10/03/2024', aluno1, projeto1)
 participacao2 = Participacao(2, '10/11/2023', '10/03/2024', aluno2, projeto1)
-
 participacao3 = Participacao(3, '10/11/2023', '10/03/2024', aluno1, projeto2)
 
 projeto1.add_participacao(participacao1)
