@@ -2,7 +2,7 @@
 
 from classes import aluno, projeto, participacao
 
-
+aluno2 = aluno.Aluno.from_string('SP0101,João,joao@email.com')
 aluno1 = aluno.Aluno.from_string('SP0101,João,joao@email.com')
 
 projeto1 = projeto.Projeto.from_string(
