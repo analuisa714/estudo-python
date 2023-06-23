@@ -34,7 +34,7 @@ print(calcular_perimetro(retangulo1))
 print(calcular_perimetro(retangulo2))
 
 
-# Classe rrepresenta um conceito
+# Classe representa um conceito
 # Classe representa um retângulo
 # Classe possui atributos: base e altura
 # Classe possui métodos (função dentro da classe)
